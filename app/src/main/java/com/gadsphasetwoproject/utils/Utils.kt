@@ -1,4 +1,4 @@
-package com.expansetech.gadsphasetwoproject.utils
+package com.gadsphasetwoproject.utils
 
 import android.content.Context
 import android.net.ConnectivityManager

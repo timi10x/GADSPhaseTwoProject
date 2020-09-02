@@ -1,11 +1,11 @@
-package com.expansetech.gadsphasetwoproject.activities
+package com.gadsphasetwoproject.activities
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import com.expansetech.gadsphasetwoproject.R
+import androidx.appcompat.app.AppCompatActivity
+import com.gadsphasetwoproject.R
 
 class SplashScreenActivity : AppCompatActivity() {
     //splash screen timeout

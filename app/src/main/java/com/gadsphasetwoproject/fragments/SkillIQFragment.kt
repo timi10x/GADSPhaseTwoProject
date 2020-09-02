@@ -1,11 +1,11 @@
-package com.expansetech.gadsphasetwoproject.fragments
+package com.gadsphasetwoproject.fragments
+
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.expansetech.gadsphasetwoproject.R
-import com.expansetech.gadsphasetwoproject.databinding.FragmentSkillIQBinding
+import androidx.fragment.app.Fragment
+import com.gadsphasetwoproject.databinding.FragmentSkillIQBinding
 
 class SkillIQFragment : Fragment() {
 

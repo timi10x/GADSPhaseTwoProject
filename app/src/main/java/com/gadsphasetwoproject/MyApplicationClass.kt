@@ -1,4 +1,4 @@
-package com.expansetech.gadsphasetwoproject
+package com.gadsphasetwoproject
 
 import android.app.Application
 import androidx.databinding.library.BuildConfig

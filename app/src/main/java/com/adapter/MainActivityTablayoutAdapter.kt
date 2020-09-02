@@ -1,4 +1,4 @@
-package com.expansetech.adapter
+package com.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager

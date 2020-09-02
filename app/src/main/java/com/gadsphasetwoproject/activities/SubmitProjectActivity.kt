@@ -1,11 +1,10 @@
-package com.expansetech.gadsphasetwoproject.activities
+package com.gadsphasetwoproject.activities
 
-import android.database.DatabaseUtils
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import com.expansetech.gadsphasetwoproject.R
-import com.expansetech.gadsphasetwoproject.databinding.ActivitySubmitProjectBinding
+import com.gadsphasetwoproject.R
+import com.gadsphasetwoproject.databinding.ActivitySubmitProjectBinding
 
 class SubmitProjectActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySubmitProjectBinding

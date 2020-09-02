@@ -8,7 +8,7 @@ android {
     buildToolsVersion "30.0.1"
 
     defaultConfig {
-        applicationId "com.expansetech.gadsphasetwoproject"
+        applicationId "com.gadsphasetwoproject"
         minSdkVersion 16
         targetSdkVersion 30
         versionCode 1
