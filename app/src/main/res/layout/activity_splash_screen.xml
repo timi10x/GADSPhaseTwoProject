@@ -6,6 +6,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/spalshscreen_bg"
         tools:context=".activities.SplashScreenActivity">
 
     </androidx.constraintlayout.widget.ConstraintLayout>
