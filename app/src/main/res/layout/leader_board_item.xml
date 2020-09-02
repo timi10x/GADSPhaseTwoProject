@@ -13,10 +13,10 @@
         android:layout_margin="4dp">
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/badge_imageView"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/toplearner"
+            android:src="@drawable/empty_img"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -31,8 +31,8 @@
             android:text="Name"
             android:textColor="@android:color/black"
             android:textSize="20sp"
-            app:layout_constraintStart_toEndOf="@+id/imageView"
-            app:layout_constraintTop_toTopOf="@+id/imageView" />
+            app:layout_constraintStart_toEndOf="@+id/badge_imageView"
+            app:layout_constraintTop_toTopOf="@+id/badge_imageView" />
 
         <TextView
             android:id="@+id/no_hours_tv"
@@ -44,7 +44,7 @@
             android:textColor="@android:color/black"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintStart_toEndOf="@+id/badge_imageView"
             app:layout_constraintTop_toBottomOf="@+id/name_tv" />
 
         <TextView

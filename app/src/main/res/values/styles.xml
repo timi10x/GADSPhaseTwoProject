@@ -13,4 +13,8 @@
 
     </style>
 
+    <style name="progressBarBlue" parent="@style/Theme.AppCompat">
+        <item name="colorAccent">@android:color/black</item>
+    </style>
+
 </resources>

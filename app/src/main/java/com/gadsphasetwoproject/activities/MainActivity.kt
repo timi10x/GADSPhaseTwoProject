@@ -4,8 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import com.adapter.MainActivityTablayoutAdapter
 import com.gadsphasetwoproject.R
+import com.gadsphasetwoproject.adapter.MainActivityTablayoutAdapter
 import com.gadsphasetwoproject.databinding.ActivityMainBinding
 import com.gadsphasetwoproject.fragments.HoursFragment
 import com.gadsphasetwoproject.fragments.SkillIQFragment

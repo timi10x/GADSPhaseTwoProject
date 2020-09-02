@@ -1,4 +1,4 @@
-package com.adapter
+package com.gadsphasetwoproject.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
