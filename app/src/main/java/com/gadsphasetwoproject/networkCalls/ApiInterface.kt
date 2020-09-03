@@ -45,7 +45,7 @@ interface ApiInterface {
         //private val httpClientBuilder = OkHttpClient.Builder().connectTimeout(10, TimeUnit.SECONDS)
 
         private val retrofit = Retrofit.Builder()
-            .baseUrl("https://freemind-app.herokuapp.com/")
+            .baseUrl("https://gadsapi.herokuapp.com/")
             .client(builder.build())
             .addConverterFactory(GsonConverterFactory.create())
             .build()
