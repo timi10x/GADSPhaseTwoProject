@@ -6,12 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.gadsphasetwoproject.databinding.FragmentSkillIQBinding
-import com.gadsphasetwoproject.networkCalls.ApiInterface
 import com.gadsphasetwoproject.utils.CustomProgressDialog
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import okio.IOException
-import timber.log.Timber
 
 class SkillIQFragment : Fragment() {
 
@@ -31,7 +26,7 @@ class SkillIQFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         progressDialog.showDialog()
-        GlobalScope.launch {
+       /* GlobalScope.launch {
             try {
                 val apiInterface = ApiInterface.CreateUserClient.apiInterface
                 val response = apiInterface.getLearnersIq()
@@ -47,7 +42,7 @@ class SkillIQFragment : Fragment() {
             } catch (e: IOException) {
                 progressDialog.hideDialog()
             }
-        }
+        }*/
     }
 
     companion object {

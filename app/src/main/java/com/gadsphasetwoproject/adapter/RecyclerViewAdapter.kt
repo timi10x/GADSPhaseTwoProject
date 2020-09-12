@@ -9,12 +9,12 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.gadsphasetwoproject.R
-import com.gadsphasetwoproject.model.UserModel
+import com.gadsphasetwoproject.model.User
 
 
-class RecyclerViewAdapter(context: Context, userModel: List<UserModel>) :
+class RecyclerViewAdapter(context: Context, User: List<User>) :
     RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>() {
-    private val userList: List<UserModel> = userModel
+    private val userList: List<User> = User
 
     val context = context
 

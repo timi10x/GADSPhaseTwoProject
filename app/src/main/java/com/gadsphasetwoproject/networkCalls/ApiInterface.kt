@@ -4,6 +4,7 @@ import com.gadsphasetwoproject.model.UserModel
 import okhttp3.ConnectionPool
 import okhttp3.OkHttpClient
 import okhttp3.Protocol
+import retrofit2.Call
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -17,7 +18,7 @@ interface ApiInterface {
     suspend fun getLearnerHours(): Response<UserModel>
 
     @GET("/api/skilliq")
-    suspend fun getLearnersIq(): Response<UserModel>
+    suspend fun getLearnersIq(): Call<UserModel>
 
 
     class ApiClient(client: OkHttpClient) {

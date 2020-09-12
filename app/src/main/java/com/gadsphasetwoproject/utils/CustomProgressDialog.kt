@@ -13,7 +13,7 @@ class CustomProgressDialog(private val activity: Activity) {
     private fun initDialog() {
         dialog = Dialog(activity)
         dialog!!.requestWindowFeature(Window.FEATURE_NO_TITLE)
-        dialog!!.setCancelable(false)
+        dialog!!.setCancelable(true)
         if (dialog!!.window != null) {
             dialog!!.window!!
                 .setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
