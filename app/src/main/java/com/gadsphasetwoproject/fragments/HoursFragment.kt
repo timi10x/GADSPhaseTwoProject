@@ -60,8 +60,6 @@ class HoursFragment : Fragment() {
                         binding.hoursRecyclerView.adapter!!.notifyDataSetChanged()
                     }
                 }
-
-
             }
 
             override fun onFailure(call: Call<List<User>>?, t: Throwable?) {

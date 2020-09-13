@@ -93,8 +93,9 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:weightSum="2"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:layout_editor_absoluteX="25dp">
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/edtxt_first_name"
@@ -111,7 +112,7 @@
                     android:inputType="text"
                     android:maxLines="1"
                     android:padding="12dp"
-                    android:textColor="@android:color/black"
+                    android:textColor="@android:color/holo_orange_dark"
                     android:textColorHint="@android:color/black"
                     android:textSize="14sp" />
 
@@ -130,7 +131,7 @@
                     android:inputType="text"
                     android:maxLines="1"
                     android:padding="12dp"
-                    android:textColor="@android:color/black"
+                    android:textColor="@android:color/holo_orange_dark"
                     android:textColorHint="@android:color/black"
                     android:textSize="14sp" />
             </androidx.appcompat.widget.LinearLayoutCompat>
@@ -147,14 +148,15 @@
                 android:inputType="textEmailAddress"
                 android:maxLines="1"
                 android:padding="12dp"
-                android:textColor="@android:color/black"
+                android:textColor="@android:color/holo_orange_dark"
                 android:textColorHint="@android:color/black"
                 android:textSize="14sp"
-                app:layout_constraintTop_toBottomOf="@id/name_container"
-                tools:layout_editor_absoluteX="25dp" />
+                app:layout_constraintEnd_toEndOf="@+id/name_container"
+                app:layout_constraintStart_toStartOf="@+id/name_container"
+                app:layout_constraintTop_toBottomOf="@id/name_container" />
 
             <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/edtxt_password"
+                android:id="@+id/edtxt_github_link"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"
@@ -165,11 +167,12 @@
                 android:inputType="text"
                 android:maxLines="1"
                 android:padding="12dp"
-                android:textColor="@android:color/black"
+                android:textColor="@android:color/holo_orange_dark"
                 android:textColorHint="@android:color/black"
                 android:textSize="14sp"
-                app:layout_constraintTop_toBottomOf="@id/edtxt_email"
-                tools:layout_editor_absoluteX="25dp" />
+                app:layout_constraintEnd_toEndOf="@+id/name_container"
+                app:layout_constraintStart_toStartOf="@+id/name_container"
+                app:layout_constraintTop_toBottomOf="@id/edtxt_email" />
 
             <androidx.cardview.widget.CardView
                 android:layout_width="200dp"
@@ -178,7 +181,7 @@
                 app:cardCornerRadius="100dp"
                 app:layout_constraintEnd_toEndOf="@+id/name_container"
                 app:layout_constraintStart_toStartOf="@+id/name_container"
-                app:layout_constraintTop_toBottomOf="@+id/edtxt_password">
+                app:layout_constraintTop_toBottomOf="@+id/edtxt_github_link">
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btn_save_account"
@@ -191,7 +194,7 @@
                     android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="@+id/name_container"
                     app:layout_constraintStart_toStartOf="@+id/name_container"
-                    app:layout_constraintTop_toBottomOf="@+id/edtxt_password" />
+                    app:layout_constraintTop_toBottomOf="@+id/edtxt_github_link" />
 
             </androidx.cardview.widget.CardView>
 
