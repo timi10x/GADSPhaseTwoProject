@@ -93,6 +93,7 @@ class SubmitProjectActivity : AppCompatActivity() {
 
             override fun onFailure(call: Call<Void>?, t: Throwable?) {
                 progressDialog.hideDialog()
+                Timber.d("this is the onfailure body ${call.toString()} ${t.toString()}")
                 showUnSuccessfulDialog()
             }
         })
