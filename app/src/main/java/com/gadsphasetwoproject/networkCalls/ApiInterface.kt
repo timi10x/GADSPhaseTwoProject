@@ -1,7 +1,7 @@
 package com.gadsphasetwoproject.networkCalls
 
 import com.gadsphasetwoproject.model.User
-import com.gadsphasetwoproject.model.UserModel
+import com.gadsphasetwoproject.model.UserIq
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -14,7 +14,7 @@ interface ApiInterface {
     fun getLearnerHours(): Call<List<User>>
 
     @GET("/api/skilliq")
-    fun getLearnersIq(): Call<List<User>>
+    fun getLearnersIq(): Call<List<UserIq>>
 
     companion object {
 

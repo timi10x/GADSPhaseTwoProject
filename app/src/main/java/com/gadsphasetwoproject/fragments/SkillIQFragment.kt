@@ -6,9 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.gadsphasetwoproject.adapter.RecyclerAdapter
+import com.gadsphasetwoproject.adapter.SkillIQAdapter
 import com.gadsphasetwoproject.databinding.FragmentSkillIQBinding
-import com.gadsphasetwoproject.model.User
+import com.gadsphasetwoproject.model.UserIq
 import com.gadsphasetwoproject.networkCalls.ApiInterface
 import com.gadsphasetwoproject.utils.CustomProgressDialog
 import retrofit2.Call
@@ -19,7 +19,7 @@ class SkillIQFragment : Fragment() {
 
     private lateinit var binding: FragmentSkillIQBinding
     private lateinit var progressDialog: CustomProgressDialog
-    private lateinit var recyclerAdapter: RecyclerAdapter
+    private lateinit var recyclerAdapter: SkillIQAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,7 +29,7 @@ class SkillIQFragment : Fragment() {
         binding = FragmentSkillIQBinding.inflate(inflater)
         progressDialog = CustomProgressDialog(requireActivity())
         with(binding) {
-            recyclerAdapter = RecyclerAdapter(requireContext())
+            recyclerAdapter = SkillIQAdapter(requireContext())
             skillRecyclerView.layoutManager = LinearLayoutManager(requireContext())
             skillRecyclerView.adapter = recyclerAdapter
         }
@@ -43,24 +43,22 @@ class SkillIQFragment : Fragment() {
 
     private fun loadData() {
         progressDialog.showDialog()
-        val apiInterface = ApiInterface.create().getLearnerHours()
-        apiInterface.enqueue(object : Callback<List<User>> {
-            override fun onResponse(call: Call<List<User>>?, response: Response<List<User>>?) {
+        val apiInterface = ApiInterface.create().getLearnersIq()
+        apiInterface.enqueue(object : Callback<List<UserIq>> {
+            override fun onResponse(call: Call<List<UserIq>>?, response: Response<List<UserIq>>?) {
                 if (response!!.isSuccessful) {
                     progressDialog.hideDialog()
                     if (response.body() != null) {
                         binding.skillEmptyStateImg.visibility = View.INVISIBLE
                         binding.skillEmptyStateText.visibility = View.INVISIBLE
                         binding.skillRecyclerView.visibility = View.VISIBLE
-                        recyclerAdapter.setUserListItems(response.body()!!)
+                        recyclerAdapter.setUserIqIqListItems(response.body()!!)
                         binding.skillRecyclerView.adapter!!.notifyDataSetChanged()
                     }
                 }
-
-
             }
 
-            override fun onFailure(call: Call<List<User>>?, t: Throwable?) {
+            override fun onFailure(call: Call<List<UserIq>>?, t: Throwable?) {
                 progressDialog.hideDialog()
             }
         })

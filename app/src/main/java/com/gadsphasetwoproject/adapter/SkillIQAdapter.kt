@@ -9,12 +9,13 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.gadsphasetwoproject.R
-import com.gadsphasetwoproject.model.User
+import com.gadsphasetwoproject.model.UserIq
 
-class RecyclerAdapter(private val context: Context) :
-    RecyclerView.Adapter<RecyclerAdapter.MyViewHolder>() {
 
-    private var userList: List<User> = listOf()
+class SkillIQAdapter(private val context: Context) :
+    RecyclerView.Adapter<SkillIQAdapter.MyViewHolder>() {
+
+    private var UserIqList: List<UserIq> = listOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
 
@@ -24,14 +25,14 @@ class RecyclerAdapter(private val context: Context) :
     }
 
     override fun getItemCount(): Int {
-        return userList.size
+        return UserIqList.size
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 
-        val item = userList[position]
+        val item = UserIqList[position]
         holder.name.text = item.name
-        holder.no_of_hours.text = item.hours.toString()
+        holder.no_of_hours.text = item.score.toString()
         holder.address.text = item.country
         val badgeUrl = item.badgeUrl
 
@@ -42,8 +43,8 @@ class RecyclerAdapter(private val context: Context) :
             .into(holder.badgeImage)
     }
 
-    fun setUserListItems(userList: List<User>) {
-        this.userList = userList
+    fun setUserIqIqListItems(UserIqList: List<UserIq>) {
+        this.UserIqList = UserIqList
         notifyDataSetChanged()
     }
 

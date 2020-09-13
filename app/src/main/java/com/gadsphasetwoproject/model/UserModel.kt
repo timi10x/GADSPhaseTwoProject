@@ -6,3 +6,10 @@ data class User(
     var country: String? = null,
     var badgeUrl: String? = null
 )
+
+data class UserIq(
+    var name: String? = null,
+    var score: String? = null,
+    var country: String? = null,
+    var badgeUrl: String? = null
+)
