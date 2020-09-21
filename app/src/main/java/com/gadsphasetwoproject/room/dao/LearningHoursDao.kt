@@ -17,5 +17,5 @@ interface LearningHoursDao {
     suspend fun insertAllHours(user: List<User>)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertHour(user: User)
+    suspend fun insertHour(user: List<User>)
 }

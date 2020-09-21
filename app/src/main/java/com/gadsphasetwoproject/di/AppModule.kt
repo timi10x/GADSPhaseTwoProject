@@ -1,13 +1,18 @@
 package com.gadsphasetwoproject.di
 
+import android.content.Context
 import com.gadsphasetwoproject.networkCalls.ApiInterface
 import com.gadsphasetwoproject.networkCalls.LearnerHoursRemoteDataSource
+import com.gadsphasetwoproject.room.dao.LearningHoursDao
+import com.gadsphasetwoproject.room.database.AppDatabase
+import com.gadsphasetwoproject.room.repository.LearnerHoursRepository
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
+import dagger.hilt.android.qualifiers.ApplicationContext
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
@@ -37,8 +42,34 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun provideLearnersRemoteDataSource(apiInterface: ApiInterface) =
+    fun provideLearnersHoursRemoteDataSource(apiInterface: ApiInterface) =
         LearnerHoursRemoteDataSource(apiInterface)
+
+    @Provides
+    fun provideSkillIqRemoteDataSource(apiInterface: ApiInterface) =
+        LearnerHoursRemoteDataSource(apiInterface)
+
+    @Singleton
+    @Provides
+    fun provideDatabase(@ApplicationContext appContext: Context) =
+        AppDatabase.getDatabase(appContext)
+
+
+    @Singleton
+    @Provides
+    fun provideLearnersHourDao(database: AppDatabase) = database.learningHoursDao()
+
+    @Singleton
+    @Provides
+    fun provideSkillIqDao(database: AppDatabase) = database.skillIqDao()
+
+    @Singleton
+    @Provides
+    fun provideLearnersHoursRepository(
+        remoteDataSource: LearnerHoursRemoteDataSource,
+        localDataSource: LearningHoursDao
+    ) =
+        LearnerHoursRepository(remoteDataSource, localDataSource)
 
 
 /*    @POST("1FAIpQLSf9d1TcNU6zc6KR8bSEM41Z1g1zl35cwZr2xyjIhaMAz8WChQ/formResponse")

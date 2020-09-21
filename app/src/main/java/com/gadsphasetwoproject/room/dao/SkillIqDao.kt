@@ -17,5 +17,5 @@ interface SkillIqDao {
     suspend fun insertAllIq(userIq: List<UserIq>)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertIq(userIq: UserIq)
+    suspend fun insertIq(userIq: List<UserIq>)
 }
