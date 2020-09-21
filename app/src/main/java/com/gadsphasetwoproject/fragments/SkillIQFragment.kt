@@ -16,12 +16,15 @@ import dagger.hilt.android.AndroidEntryPoint
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class SkillIQFragment : Fragment() {
 
     private var binding: FragmentSkillIQBinding by autoCleared()
-    private lateinit var progressDialog: CustomProgressDialog
+
+    @Inject
+    lateinit var progressDialog: CustomProgressDialog
     private lateinit var recyclerAdapter: SkillIQAdapter
 
     override fun onCreateView(

@@ -14,13 +14,14 @@ import com.gadsphasetwoproject.databinding.ActivitySubmitProjectBinding
 import com.gadsphasetwoproject.networkCalls.ApiInterface
 import com.gadsphasetwoproject.utils.CustomProgressDialog
 import com.gadsphasetwoproject.utils.Utils
+import dagger.hilt.android.AndroidEntryPoint
 import es.dmoral.toasty.Toasty
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import timber.log.Timber
 
-
+@AndroidEntryPoint
 class SubmitProjectActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySubmitProjectBinding
 

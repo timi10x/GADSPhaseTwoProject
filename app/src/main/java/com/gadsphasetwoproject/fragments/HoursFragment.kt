@@ -24,7 +24,7 @@ class HoursFragment : Fragment() {
 
     @Inject
     lateinit var progressDialog: CustomProgressDialog
-    lateinit var recyclerAdapter: RecyclerAdapter
+    private lateinit var recyclerAdapter: RecyclerAdapter
 
 
     override fun onCreateView(

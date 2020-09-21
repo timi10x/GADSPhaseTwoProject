@@ -9,7 +9,9 @@ import com.gadsphasetwoproject.adapter.MainActivityTablayoutAdapter
 import com.gadsphasetwoproject.databinding.ActivityMainBinding
 import com.gadsphasetwoproject.fragments.HoursFragment
 import com.gadsphasetwoproject.fragments.SkillIQFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     //private lateinit var binding: ActivityMainBinding
     private lateinit var binding: ActivityMainBinding

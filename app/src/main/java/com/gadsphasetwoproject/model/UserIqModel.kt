@@ -1,12 +1,8 @@
 package com.gadsphasetwoproject.model
 
-data class User(
-    var name: String? = null,
-    var hours: String? = null,
-    var country: String? = null,
-    var badgeUrl: String? = null
-)
+import androidx.room.Entity
 
+@Entity(tableName = "Iq_leader_board")
 data class UserIq(
     var name: String? = null,
     var score: String? = null,

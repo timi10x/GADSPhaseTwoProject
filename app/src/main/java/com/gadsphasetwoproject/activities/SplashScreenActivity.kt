@@ -4,10 +4,12 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.gadsphasetwoproject.R
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
 
 
+@AndroidEntryPoint
 class SplashScreenActivity : AppCompatActivity(), CoroutineScope {
 
     override val coroutineContext: CoroutineContext
