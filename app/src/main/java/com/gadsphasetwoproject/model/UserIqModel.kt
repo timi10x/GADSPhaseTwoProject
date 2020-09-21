@@ -1,6 +1,7 @@
 package com.gadsphasetwoproject.model
 
 import androidx.room.Entity
+import androidx.room.PrimaryKey
 
 @Entity(tableName = "Iq_leader_board")
 data class UserIq(
@@ -8,4 +9,7 @@ data class UserIq(
     var score: String? = null,
     var country: String? = null,
     var badgeUrl: String? = null
-)
+) {
+    @PrimaryKey(autoGenerate = true)
+    var userIqId: Int = 0
+}

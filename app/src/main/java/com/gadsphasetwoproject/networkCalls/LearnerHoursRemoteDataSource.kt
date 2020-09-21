@@ -1,3 +1,6 @@
 package com.gadsphasetwoproject.networkCalls
 
-class LearnerHoursRemoteDataSource
+import javax.inject.Inject
+
+class LearnerHoursRemoteDataSource @Inject constructor(private val apiInterface: ApiInterface) :
+    BaseDataSource()
