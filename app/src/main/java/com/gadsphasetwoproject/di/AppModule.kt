@@ -3,9 +3,12 @@ package com.gadsphasetwoproject.di
 import android.content.Context
 import com.gadsphasetwoproject.networkCalls.ApiInterface
 import com.gadsphasetwoproject.networkCalls.LearnerHoursRemoteDataSource
+import com.gadsphasetwoproject.networkCalls.SkillIqRemoteDataSource
 import com.gadsphasetwoproject.room.dao.LearningHoursDao
+import com.gadsphasetwoproject.room.dao.SkillIqDao
 import com.gadsphasetwoproject.room.database.AppDatabase
 import com.gadsphasetwoproject.room.repository.LearnerHoursRepository
+import com.gadsphasetwoproject.room.repository.SkillIqRepository
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module
@@ -36,9 +39,6 @@ object AppModule {
     fun provideLearnersHoursService(retrofit: Retrofit): ApiInterface =
         retrofit.create(ApiInterface::class.java)
 
-    @Provides
-    fun provideSkillIqService(retrofit: Retrofit): ApiInterface =
-        retrofit.create(ApiInterface::class.java)
 
     @Singleton
     @Provides
@@ -46,8 +46,9 @@ object AppModule {
         LearnerHoursRemoteDataSource(apiInterface)
 
     @Provides
+    @Singleton
     fun provideSkillIqRemoteDataSource(apiInterface: ApiInterface) =
-        LearnerHoursRemoteDataSource(apiInterface)
+        SkillIqRemoteDataSource(apiInterface)
 
     @Singleton
     @Provides
@@ -70,6 +71,14 @@ object AppModule {
         localDataSource: LearningHoursDao
     ) =
         LearnerHoursRepository(remoteDataSource, localDataSource)
+
+    @Singleton
+    @Provides
+    fun provideLearnersSkillIqRepository(
+        remoteDataSource: SkillIqRemoteDataSource,
+        localDataSource: SkillIqDao
+    ) =
+        SkillIqRepository(remoteDataSource, localDataSource)
 
 
 /*    @POST("1FAIpQLSf9d1TcNU6zc6KR8bSEM41Z1g1zl35cwZr2xyjIhaMAz8WChQ/formResponse")

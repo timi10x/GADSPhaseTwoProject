@@ -6,16 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.rickandmorty.utils.autoCleared
 import com.gadsphasetwoproject.adapter.SkillIQAdapter
 import com.gadsphasetwoproject.databinding.FragmentSkillIQBinding
-import com.gadsphasetwoproject.model.UserIq
-import com.gadsphasetwoproject.networkCalls.ApiInterface
 import com.gadsphasetwoproject.utils.CustomProgressDialog
+import com.gadsphasetwoproject.utils.autoCleared
 import dagger.hilt.android.AndroidEntryPoint
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -42,12 +37,7 @@ class SkillIQFragment : Fragment() {
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        loadData()
-    }
-
-    private fun loadData() {
+    /*private fun loadData() {
         progressDialog.showDialog()
         val apiInterface = ApiInterface.create().getLearnersIq()
         apiInterface.enqueue(object : Callback<List<UserIq>> {
@@ -68,7 +58,7 @@ class SkillIQFragment : Fragment() {
                 progressDialog.hideDialog()
             }
         })
-    }
+    }*/
 
     companion object {
         @JvmStatic

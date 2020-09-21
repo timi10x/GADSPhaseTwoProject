@@ -11,15 +11,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.gadsphasetwoproject.R
 import com.gadsphasetwoproject.databinding.ActivitySubmitProjectBinding
-import com.gadsphasetwoproject.networkCalls.ApiInterface
 import com.gadsphasetwoproject.utils.CustomProgressDialog
 import com.gadsphasetwoproject.utils.Utils
 import dagger.hilt.android.AndroidEntryPoint
 import es.dmoral.toasty.Toasty
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import timber.log.Timber
 
 @AndroidEntryPoint
 class SubmitProjectActivity : AppCompatActivity() {
@@ -61,7 +56,7 @@ class SubmitProjectActivity : AppCompatActivity() {
 
         val yesBtn: Button = dialog.findViewById(R.id.submit_button)
         yesBtn.setOnClickListener {
-            submitProject()
+            //submitProject()
             dialog.dismiss()
         }
 
@@ -69,7 +64,7 @@ class SubmitProjectActivity : AppCompatActivity() {
 
     }
 
-    private fun submitProject() {
+    /*private fun submitProject() {
         progressDialog.showDialog()
         val apiInterface = ApiInterface.submit().submitProject(
             binding.edtxtEmail.text.toString(),
@@ -100,7 +95,7 @@ class SubmitProjectActivity : AppCompatActivity() {
             }
         })
 
-    }
+    }*/
 
     private fun showUnSuccessfulDialog() {
         val dialog = Dialog(this)

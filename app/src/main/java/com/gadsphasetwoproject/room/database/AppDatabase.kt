@@ -4,10 +4,12 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.gadsphasetwoproject.model.User
+import com.gadsphasetwoproject.model.UserIq
 import com.gadsphasetwoproject.room.dao.LearningHoursDao
 import com.gadsphasetwoproject.room.dao.SkillIqDao
 
-@Database(entities = [Character::class], version = 1, exportSchema = false)
+@Database(entities = [User::class, UserIq::class], version = 1, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun learningHoursDao(): LearningHoursDao

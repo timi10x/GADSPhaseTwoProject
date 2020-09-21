@@ -1,4 +1,4 @@
-package com.example.rickandmorty.utils
+package com.gadsphasetwoproject.utils
 /*
  * Copyright (C) 2018 The Android Open Source Project
  *

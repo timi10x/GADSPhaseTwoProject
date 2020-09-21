@@ -6,21 +6,19 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.rickandmorty.utils.autoCleared
 import com.gadsphasetwoproject.adapter.RecyclerAdapter
 import com.gadsphasetwoproject.databinding.FragmentHoursBinding
-import com.gadsphasetwoproject.model.User
-import com.gadsphasetwoproject.networkCalls.ApiInterface
+
 import com.gadsphasetwoproject.utils.CustomProgressDialog
+import com.gadsphasetwoproject.utils.autoCleared
 import dagger.hilt.android.AndroidEntryPoint
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+
 import javax.inject.Inject
 
 @AndroidEntryPoint
 class HoursFragment : Fragment() {
     private var binding: FragmentHoursBinding by autoCleared()
+    //private val viewModel =
 
     @Inject
     lateinit var progressDialog: CustomProgressDialog
@@ -44,12 +42,7 @@ class HoursFragment : Fragment() {
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        loadData()
-    }
-
-    private fun loadData() {
+    /*private fun loadData() {
         progressDialog.showDialog()
         val apiInterface = ApiInterface.create().getLearnerHours()
         apiInterface.enqueue(object : Callback<List<User>> {
@@ -70,7 +63,7 @@ class HoursFragment : Fragment() {
                 progressDialog.hideDialog()
             }
         })
-    }
+    }*/
 
 
     companion object {

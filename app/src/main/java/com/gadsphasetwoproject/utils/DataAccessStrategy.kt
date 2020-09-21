@@ -1,4 +1,4 @@
-package com.example.rickandmorty.utils
+package com.gadsphasetwoproject.utils
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData

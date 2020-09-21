@@ -1,8 +1,8 @@
 package com.gadsphasetwoproject.room.repository
 
-import com.example.rickandmorty.utils.performGetOperation
 import com.gadsphasetwoproject.networkCalls.SkillIqRemoteDataSource
 import com.gadsphasetwoproject.room.dao.SkillIqDao
+import com.gadsphasetwoproject.utils.performGetOperation
 import javax.inject.Inject
 
 class SkillIqRepository @Inject constructor(

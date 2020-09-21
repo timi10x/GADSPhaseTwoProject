@@ -1,8 +1,8 @@
 package com.gadsphasetwoproject.room.repository
 
-import com.example.rickandmorty.utils.performGetOperation
 import com.gadsphasetwoproject.networkCalls.LearnerHoursRemoteDataSource
 import com.gadsphasetwoproject.room.dao.LearningHoursDao
+import com.gadsphasetwoproject.utils.performGetOperation
 import javax.inject.Inject
 
 class LearnerHoursRepository @Inject constructor(
