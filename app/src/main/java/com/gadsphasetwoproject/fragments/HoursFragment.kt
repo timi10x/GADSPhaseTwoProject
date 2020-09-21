@@ -5,9 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.gadsphasetwoproject.adapter.RecyclerAdapter
 import com.gadsphasetwoproject.databinding.FragmentHoursBinding
+import com.gadsphasetwoproject.model.viewModel.LearnerHoursViewModel
 
 import com.gadsphasetwoproject.utils.CustomProgressDialog
 import com.gadsphasetwoproject.utils.autoCleared
@@ -18,7 +20,7 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class HoursFragment : Fragment() {
     private var binding: FragmentHoursBinding by autoCleared()
-    //private val viewModel =
+    private val viewModel: LearnerHoursViewModel by viewModels()
 
     @Inject
     lateinit var progressDialog: CustomProgressDialog
