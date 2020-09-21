@@ -6,18 +6,21 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.rickandmorty.utils.autoCleared
 import com.gadsphasetwoproject.adapter.SkillIQAdapter
 import com.gadsphasetwoproject.databinding.FragmentSkillIQBinding
 import com.gadsphasetwoproject.model.UserIq
 import com.gadsphasetwoproject.networkCalls.ApiInterface
 import com.gadsphasetwoproject.utils.CustomProgressDialog
+import dagger.hilt.android.AndroidEntryPoint
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+@AndroidEntryPoint
 class SkillIQFragment : Fragment() {
 
-    private lateinit var binding: FragmentSkillIQBinding
+    private var binding: FragmentSkillIQBinding by autoCleared()
     private lateinit var progressDialog: CustomProgressDialog
     private lateinit var recyclerAdapter: SkillIQAdapter
 

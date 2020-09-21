@@ -2,22 +2,33 @@ package com.gadsphasetwoproject.activities
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import com.gadsphasetwoproject.R
+import kotlinx.coroutines.*
+import kotlin.coroutines.CoroutineContext
 
-class SplashScreenActivity : AppCompatActivity() {
-    //splash screen timeout
-    private val timeout = 2000L
+
+class SplashScreenActivity : AppCompatActivity(), CoroutineScope {
+
+    override val coroutineContext: CoroutineContext
+        get() = Dispatchers.Main + Job()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)
 
-        Handler(Looper.getMainLooper()).postDelayed({
-            startActivity(Intent(this, MainActivity::class.java))
+        launch {
+            delay(2000L)
+
+            startActivity(Intent(this@SplashScreenActivity, MainActivity::class.java))
             finish()
-        }, timeout)
+        }
     }
+
+    override fun onPause() {
+        coroutineContext.cancel()
+        super.onPause()
+    }
+
+
 }

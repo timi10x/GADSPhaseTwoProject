@@ -6,20 +6,24 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.rickandmorty.utils.autoCleared
 import com.gadsphasetwoproject.adapter.RecyclerAdapter
 import com.gadsphasetwoproject.databinding.FragmentHoursBinding
 import com.gadsphasetwoproject.model.User
 import com.gadsphasetwoproject.networkCalls.ApiInterface
 import com.gadsphasetwoproject.utils.CustomProgressDialog
+import dagger.hilt.android.AndroidEntryPoint
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import javax.inject.Inject
 
-
+@AndroidEntryPoint
 class HoursFragment : Fragment() {
-    private lateinit var binding: FragmentHoursBinding
+    private var binding: FragmentHoursBinding by autoCleared()
 
-    private lateinit var progressDialog: CustomProgressDialog
+    @Inject
+    lateinit var progressDialog: CustomProgressDialog
     lateinit var recyclerAdapter: RecyclerAdapter
 
 

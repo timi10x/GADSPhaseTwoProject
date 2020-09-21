@@ -5,10 +5,11 @@ import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.view.Window
-
 import com.gadsphasetwoproject.R
+import javax.inject.Inject
 
-class CustomProgressDialog(private val activity: Activity) {
+
+class CustomProgressDialog @Inject constructor(private val activity: Activity) {
     private var dialog: Dialog? = null
     private fun initDialog() {
         dialog = Dialog(activity)
