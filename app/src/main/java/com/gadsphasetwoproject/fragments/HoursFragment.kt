@@ -12,8 +12,10 @@ import com.gadsphasetwoproject.databinding.FragmentHoursBinding
 import com.gadsphasetwoproject.model.viewModel.LearnerHoursViewModel
 
 import com.gadsphasetwoproject.utils.CustomProgressDialog
+import com.gadsphasetwoproject.utils.Resource
 import com.gadsphasetwoproject.utils.autoCleared
 import dagger.hilt.android.AndroidEntryPoint
+import es.dmoral.toasty.Toasty
 
 import javax.inject.Inject
 
@@ -34,39 +36,38 @@ class HoursFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentHoursBinding.inflate(inflater)
         progressDialog = CustomProgressDialog(requireActivity())
-
-        with(binding) {
-            recyclerAdapter = RecyclerAdapter(requireContext())
-            hoursRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-            hoursRecyclerView.adapter = recyclerAdapter
-        }
-
         return binding.root
     }
 
-    /*private fun loadData() {
-        progressDialog.showDialog()
-        val apiInterface = ApiInterface.create().getLearnerHours()
-        apiInterface.enqueue(object : Callback<List<User>> {
-            override fun onResponse(call: Call<List<User>>?, response: Response<List<User>>?) {
-                if (response!!.isSuccessful) {
+    private fun setupRecyclerView() {
+        recyclerAdapter = RecyclerAdapter(requireContext())
+        binding.hoursRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+        binding.hoursRecyclerView.adapter = recyclerAdapter
+    }
+
+    private fun setupObservers() {
+        viewModel.learnerHours.observe(viewLifecycleOwner, {
+            when (it.status) {
+                Resource.Status.SUCCESS -> {
                     progressDialog.hideDialog()
-                    if (response.body() != null) {
+                    if (!it.data.isNullOrEmpty()) {
                         binding.hoursEmptyStateImg.visibility = View.INVISIBLE
                         binding.hoursEmptyStateText.visibility = View.INVISIBLE
                         binding.hoursRecyclerView.visibility = View.VISIBLE
-                        recyclerAdapter.setUserListItems(response.body()!!)
-                        binding.hoursRecyclerView.adapter!!.notifyDataSetChanged()
+                        recyclerAdapter.setUserListItems(ArrayList(it.data))
                     }
-                }
-            }
 
-            override fun onFailure(call: Call<List<User>>?, t: Throwable?) {
-                progressDialog.hideDialog()
+                }
+                Resource.Status.ERROR -> {
+                    progressDialog.hideDialog()
+                    Toasty.error(requireContext(), "error loading", Toasty.LENGTH_SHORT, true)
+                        .show()
+                }
+                Resource.Status.LOADING ->
+                    progressDialog.showDialog()
             }
         })
-    }*/
-
+    }
 
     companion object {
 

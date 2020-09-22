@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.gadsphasetwoproject.adapter.SkillIQAdapter
 import com.gadsphasetwoproject.databinding.FragmentSkillIQBinding
@@ -52,11 +51,17 @@ class SkillIQFragment : Fragment() {
     }
 
     private fun setupObservers() {
-        viewModel.skillIq.observe(viewLifecycleOwner, Observer {
+        viewModel.skillIq.observe(viewLifecycleOwner, {
             when (it.status) {
                 Resource.Status.SUCCESS -> {
                     progressDialog.hideDialog()
-                    if (!it.data.isNullOrEmpty()) recyclerAdapter.setUserIqIqListItems(ArrayList(it.data))
+                    if (!it.data.isNullOrEmpty()) {
+                        binding.skillEmptyStateText.visibility = View.INVISIBLE
+                        binding.skillEmptyStateImg.visibility = View.INVISIBLE
+                        binding.skillRecyclerView.visibility = View.VISIBLE
+
+                        recyclerAdapter.setUserIqIqListItems(ArrayList(it.data))
+                    }
                 }
                 Resource.Status.ERROR -> {
                     progressDialog.hideDialog()
@@ -69,29 +74,6 @@ class SkillIQFragment : Fragment() {
             }
         })
     }
-
-    /*private fun loadData() {
-        progressDialog.showDialog()
-        val apiInterface = ApiInterface.create().getLearnersIq()
-        apiInterface.enqueue(object : Callback<List<UserIq>> {
-            override fun onResponse(call: Call<List<UserIq>>?, response: Response<List<UserIq>>?) {
-                if (response!!.isSuccessful) {
-                    progressDialog.hideDialog()
-                    if (response.body() != null) {
-                        binding.skillEmptyStateImg.visibility = View.INVISIBLE
-                        binding.skillEmptyStateText.visibility = View.INVISIBLE
-                        binding.skillRecyclerView.visibility = View.VISIBLE
-                        recyclerAdapter.setUserIqIqListItems(response.body()!!)
-                        binding.skillRecyclerView.adapter!!.notifyDataSetChanged()
-                    }
-                }
-            }
-
-            override fun onFailure(call: Call<List<UserIq>>?, t: Throwable?) {
-                progressDialog.hideDialog()
-            }
-        })
-    }*/
 
     companion object {
         @JvmStatic
