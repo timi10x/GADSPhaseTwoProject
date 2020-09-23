@@ -14,7 +14,6 @@ import com.gadsphasetwoproject.utils.CustomProgressDialog
 import com.gadsphasetwoproject.utils.Resource
 import com.gadsphasetwoproject.utils.autoCleared
 import dagger.hilt.android.AndroidEntryPoint
-import es.dmoral.toasty.Toasty
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -65,8 +64,8 @@ class SkillIQFragment : Fragment() {
                 }
                 Resource.Status.ERROR -> {
                     progressDialog.hideDialog()
-                    Toasty.error(requireContext(), "error loading", Toasty.LENGTH_SHORT, true)
-                        .show()
+                    /*Toasty.error(requireContext(), "error loading", Toasty.LENGTH_SHORT, true)
+                        .show()*/
                 }
 
                 Resource.Status.LOADING ->

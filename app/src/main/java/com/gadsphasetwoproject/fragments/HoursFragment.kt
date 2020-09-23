@@ -10,13 +10,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.gadsphasetwoproject.adapter.RecyclerAdapter
 import com.gadsphasetwoproject.databinding.FragmentHoursBinding
 import com.gadsphasetwoproject.model.viewModel.LearnerHoursViewModel
-
 import com.gadsphasetwoproject.utils.CustomProgressDialog
 import com.gadsphasetwoproject.utils.Resource
 import com.gadsphasetwoproject.utils.autoCleared
 import dagger.hilt.android.AndroidEntryPoint
-import es.dmoral.toasty.Toasty
-
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -37,6 +34,12 @@ class HoursFragment : Fragment() {
         binding = FragmentHoursBinding.inflate(inflater)
         progressDialog = CustomProgressDialog(requireActivity())
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setupRecyclerView()
+        setupObservers()
     }
 
     private fun setupRecyclerView() {
@@ -60,8 +63,8 @@ class HoursFragment : Fragment() {
                 }
                 Resource.Status.ERROR -> {
                     progressDialog.hideDialog()
-                    Toasty.error(requireContext(), "error loading", Toasty.LENGTH_SHORT, true)
-                        .show()
+                    /*Toasty.error(requireContext(), "error loading", Toasty.LENGTH_SHORT, true)
+                        .show()*/
                 }
                 Resource.Status.LOADING ->
                     progressDialog.showDialog()
