@@ -33,7 +33,7 @@ class SubmitProjectActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_submit_project)
         progressDialog = CustomProgressDialog(this)
         setSupportActionBar(findViewById(R.id.submit_toolbar))
-        subscribeToLiveData()
+        getLiveData()
         with(binding) {
             backButton.setOnClickListener {
                 onBackPressed()
@@ -91,7 +91,7 @@ class SubmitProjectActivity : AppCompatActivity() {
         )
     }
 
-    private fun subscribeToLiveData() {
+    private fun getLiveData() {
         viewModel.getSubmission.observe(this, {
             if (it == true) {
                 progressDialog.hideDialog()
