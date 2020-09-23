@@ -13,19 +13,27 @@ import androidx.databinding.DataBindingUtil
 import com.gadsphasetwoproject.R
 import com.gadsphasetwoproject.databinding.ActivitySubmitProjectBinding
 import com.gadsphasetwoproject.model.viewModel.SubmitProjectViewModel
+import com.gadsphasetwoproject.utils.CustomProgressDialog
 import com.gadsphasetwoproject.utils.Utils
 import dagger.hilt.android.AndroidEntryPoint
 import es.dmoral.toasty.Toasty
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class SubmitProjectActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySubmitProjectBinding
 
     private val viewModel: SubmitProjectViewModel by viewModels()
+
+    @Inject
+    lateinit var progressDialog: CustomProgressDialog
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_submit_project)
+        progressDialog = CustomProgressDialog(this)
         setSupportActionBar(findViewById(R.id.submit_toolbar))
+        subscribeToLiveData()
         with(binding) {
             backButton.setOnClickListener {
                 onBackPressed()
@@ -82,6 +90,49 @@ class SubmitProjectActivity : AppCompatActivity() {
             link
         )
     }
+
+    private fun subscribeToLiveData() {
+        viewModel.getSubmission.observe(this, {
+            if (it == true) {
+                progressDialog.hideDialog()
+                showSuccessfulDialog()
+            } else {
+                progressDialog.hideDialog()
+                showUnSuccessfulDialog()
+            }
+        })
+        viewModel.getLoading.observe(this, { loading ->
+            if (loading == true) {
+                progressDialog.showDialog()
+            } else {
+                progressDialog.hideDialog()
+            }
+        })
+    }
+
+    private fun showUnSuccessfulDialog() {
+        val dialog = Dialog(this)
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+
+        dialog.setContentView(R.layout.submission_not_successful_dialog)
+        dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.setCancelable(true)
+        dialog.show()
+
+    }
+
+    private fun showSuccessfulDialog() {
+        val dialog = Dialog(this)
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+
+        dialog.setContentView(R.layout.submission_successful_dialog)
+        dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.setCancelable(true)
+
+        dialog.show()
+
+    }
+
 
     private fun validateFields(): Boolean {
         var isValid = true

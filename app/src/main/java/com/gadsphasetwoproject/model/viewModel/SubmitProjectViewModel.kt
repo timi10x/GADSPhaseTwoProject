@@ -1,54 +1,31 @@
 package com.gadsphasetwoproject.model.viewModel
 
-import android.app.Application
-import android.app.Dialog
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
-import android.view.Window
 import androidx.hilt.lifecycle.ViewModelInject
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.gadsphasetwoproject.R
 import com.gadsphasetwoproject.room.repository.SubmitProjectRepository
 import com.gadsphasetwoproject.utils.Resource
 import kotlinx.coroutines.launch
 
 class SubmitProjectViewModel @ViewModelInject constructor(
-    private val repository: SubmitProjectRepository,
-    private val application: Application
+    private val repository: SubmitProjectRepository
 ) : ViewModel() {
 
-    private val context = application.applicationContext
-    private fun showUnSuccessfulDialog() {
-        val dialog = Dialog(context)
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-
-        dialog.setContentView(R.layout.submission_not_successful_dialog)
-        dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        dialog.setCancelable(true)
-
-        dialog.show()
-
-    }
-
-    private fun showSuccessfulDialog() {
-        val dialog = Dialog(context)
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-
-        dialog.setContentView(R.layout.submission_successful_dialog)
-        dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        dialog.setCancelable(true)
-
-        dialog.show()
-
-    }
+    private val _isLoading: MutableLiveData<Boolean> = MutableLiveData()
+    val getLoading: LiveData<Boolean>
+        get() = _isLoading
+    private val _isSuccessful: MutableLiveData<Boolean> = MutableLiveData()
+    val getSubmission: LiveData<Boolean>
+        get() = _isSuccessful
 
     fun submitProject(
         email: String?,
         name: String?,
         lastname: String?,
         link: String?
-    ) {
+    ) =
         viewModelScope.launch {
             val result = repository.submitProject(
                 email,
@@ -60,19 +37,22 @@ class SubmitProjectViewModel @ViewModelInject constructor(
                 result.status
                 ) {
                 Resource.Status.SUCCESS -> {
-                    showSuccessfulDialog()
+                    _isSuccessful.postValue(true)
+                    _isLoading.postValue(false)
                 }
 
                 Resource.Status.ERROR -> {
-                    showUnSuccessfulDialog()
+                    _isSuccessful.postValue(false)
+                    _isLoading.postValue(false)
 
                 }
 
                 Resource.Status.LOADING -> {
-
+                    _isLoading.postValue(true)
+                    _isSuccessful.postValue(false)
                 }
             }
         }
-    }
+
 
 }
