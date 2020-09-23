@@ -1,6 +1,6 @@
 # GADSPhaseTwoProject
 Google Africa Developer Scholarship Phase II. Associate Android Developer Practice Project
-.............................................
+
 This project was refactored to use some of the best practices in android development
 Using:
  * Room

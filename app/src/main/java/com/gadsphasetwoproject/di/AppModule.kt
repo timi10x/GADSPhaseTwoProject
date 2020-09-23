@@ -4,6 +4,7 @@ import android.content.Context
 import com.gadsphasetwoproject.networkCalls.ApiInterface
 import com.gadsphasetwoproject.networkCalls.LearnerHoursRemoteDataSource
 import com.gadsphasetwoproject.networkCalls.SkillIqRemoteDataSource
+import com.gadsphasetwoproject.networkCalls.SubmitRemoteDataSource
 import com.gadsphasetwoproject.room.dao.LearningHoursDao
 import com.gadsphasetwoproject.room.dao.SkillIqDao
 import com.gadsphasetwoproject.room.database.AppDatabase
@@ -49,6 +50,11 @@ object AppModule {
     @Singleton
     fun provideSkillIqRemoteDataSource(apiInterface: ApiInterface) =
         SkillIqRemoteDataSource(apiInterface)
+
+    @Provides
+    @Singleton
+    fun provideSubmitProjectRemoteDataSource(apiInterface: ApiInterface) =
+        SubmitRemoteDataSource(apiInterface)
 
     @Singleton
     @Provides

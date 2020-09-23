@@ -7,11 +7,12 @@ import android.os.Bundle
 import android.view.Window
 import android.widget.Button
 import android.widget.ImageView
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.gadsphasetwoproject.R
 import com.gadsphasetwoproject.databinding.ActivitySubmitProjectBinding
-import com.gadsphasetwoproject.utils.CustomProgressDialog
+import com.gadsphasetwoproject.model.viewModel.SubmitProjectViewModel
 import com.gadsphasetwoproject.utils.Utils
 import dagger.hilt.android.AndroidEntryPoint
 import es.dmoral.toasty.Toasty
@@ -20,12 +21,11 @@ import es.dmoral.toasty.Toasty
 class SubmitProjectActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySubmitProjectBinding
 
-    private lateinit var progressDialog: CustomProgressDialog
+    private val viewModel: SubmitProjectViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_submit_project)
         setSupportActionBar(findViewById(R.id.submit_toolbar))
-        progressDialog = CustomProgressDialog(this)
         with(binding) {
             backButton.setOnClickListener {
                 onBackPressed()
@@ -56,7 +56,12 @@ class SubmitProjectActivity : AppCompatActivity() {
 
         val yesBtn: Button = dialog.findViewById(R.id.submit_button)
         yesBtn.setOnClickListener {
-            //submitProject()
+            submitProject(
+                binding.edtxtEmail.text.toString(),
+                binding.edtxtFirstName.text.toString(),
+                binding.edtxtLastName.text.toString(),
+                binding.edtxtGithubLink.text.toString()
+            )
             dialog.dismiss()
         }
 
@@ -64,61 +69,18 @@ class SubmitProjectActivity : AppCompatActivity() {
 
     }
 
-    /*private fun submitProject() {
-        progressDialog.showDialog()
-        val apiInterface = ApiInterface.submit().submitProject(
-            binding.edtxtEmail.text.toString(),
-            binding.edtxtFirstName.text.toString(),
-            binding.edtxtLastName.text.toString(),
-            binding.edtxtGithubLink.text.toString()
+    private fun submitProject(
+        email: String?,
+        name: String?,
+        lastname: String?,
+        link: String?
+    ) {
+        viewModel.submitProject(
+            email,
+            name,
+            lastname,
+            link
         )
-
-        apiInterface.enqueue(object : Callback<Void> {
-            override fun onResponse(call: Call<Void>?, response: Response<Void>?) {
-                if (response!!.isSuccessful) {
-                    progressDialog.hideDialog()
-                    Timber.d("${response.code()}")
-                    Toasty.success(
-                        this@SubmitProjectActivity,
-                        "successfully sent",
-                        Toasty.LENGTH_SHORT,
-                        true
-                    ).show()
-                    showSuccessfulDialog()
-                }
-            }
-
-            override fun onFailure(call: Call<Void>?, t: Throwable?) {
-                progressDialog.hideDialog()
-                Timber.d("this is the onfailure body ${call.toString()} ${t.toString()}")
-                showUnSuccessfulDialog()
-            }
-        })
-
-    }*/
-
-    private fun showUnSuccessfulDialog() {
-        val dialog = Dialog(this)
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-
-        dialog.setContentView(R.layout.submission_not_successful_dialog)
-        dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        dialog.setCancelable(true)
-
-        dialog.show()
-
-    }
-
-    private fun showSuccessfulDialog() {
-        val dialog = Dialog(this)
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-
-        dialog.setContentView(R.layout.submission_successful_dialog)
-        dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        dialog.setCancelable(true)
-
-        dialog.show()
-
     }
 
     private fun validateFields(): Boolean {
