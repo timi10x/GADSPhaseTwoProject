@@ -1,9 +1,8 @@
 package com.gadsphasetwo.viewmodel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import androidx.test.platform.app.InstrumentationRegistry
-import com.gadsphasetwoproject.model.viewModel.LearnerHoursViewModel
-import com.gadsphasetwoproject.room.repository.LearnerHoursRepository
+import com.gadsphasetwoproject.model.viewModel.SkillIqViewModel
+import com.gadsphasetwoproject.room.repository.SkillIqRepository
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import org.junit.Before
@@ -12,11 +11,10 @@ import org.junit.Test
 import org.junit.rules.RuleChain
 import javax.inject.Inject
 
-@HiltAndroidTest
-class LearnerHoursViewModelTest {
 
-    /*@get:Rule
-    val testCoroutine = TestCoroutineRule()*/
+@HiltAndroidTest
+class SkillIqViewModelTest {
+
 
     private val hiltRule = HiltAndroidRule(this)
     private val instantTaskExecutorRule = InstantTaskExecutorRule()
@@ -27,21 +25,19 @@ class LearnerHoursViewModelTest {
         .around(instantTaskExecutorRule)
 
     @Inject
-    lateinit var repository: LearnerHoursRepository
+    lateinit var repository: SkillIqRepository
 
-    private lateinit var viewModel: LearnerHoursViewModel
+    private lateinit var viewModel: SkillIqViewModel
 
     @Before
     fun setUp() {
         hiltRule.inject()
-        val context = InstrumentationRegistry.getInstrumentation().targetContext
-        viewModel = LearnerHoursViewModel(repository)
-    }
 
+        viewModel = SkillIqViewModel(repository)
+    }
 
     @Test
-    fun testWasUserInWithData() {
-        viewModel.learnerHours
+    fun testViewModel() {
+        viewModel.skillIq
     }
-
 }

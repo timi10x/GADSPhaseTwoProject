@@ -1,8 +1,9 @@
 package com.gadsphasetwo.viewmodel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.gadsphasetwoproject.model.viewModel.SubmitProjectViewModel
-import com.gadsphasetwoproject.room.repository.SubmitProjectRepository
+import androidx.test.platform.app.InstrumentationRegistry
+import com.gadsphasetwoproject.model.viewModel.LearnerHoursViewModel
+import com.gadsphasetwoproject.room.repository.LearnerHoursRepository
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import org.junit.Before
@@ -11,9 +12,12 @@ import org.junit.Test
 import org.junit.rules.RuleChain
 import javax.inject.Inject
 
-
 @HiltAndroidTest
-class SubmitProjectViewModelTest {
+class LearnersHoursViewModelTest {
+
+    /*@get:Rule
+    val testCoroutine = TestCoroutineRule()*/
+
     private val hiltRule = HiltAndroidRule(this)
     private val instantTaskExecutorRule = InstantTaskExecutorRule()
 
@@ -22,19 +26,22 @@ class SubmitProjectViewModelTest {
         .outerRule(hiltRule)
         .around(instantTaskExecutorRule)
 
-    private lateinit var submitProjectViewModel: SubmitProjectViewModel
     @Inject
-    lateinit var submitProjectRepository: SubmitProjectRepository
+    lateinit var repository: LearnerHoursRepository
+
+    private lateinit var viewModel: LearnerHoursViewModel
 
     @Before
     fun setUp() {
         hiltRule.inject()
-        submitProjectViewModel = SubmitProjectViewModel(submitProjectRepository)
+        val context = InstrumentationRegistry.getInstrumentation().targetContext
+        viewModel = LearnerHoursViewModel(repository)
     }
+
 
     @Test
     fun testViewModel() {
-        /*submitProjectViewModel.submitProject()*/
+        viewModel.learnerHours
     }
 
 }
