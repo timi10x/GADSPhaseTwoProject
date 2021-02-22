@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.gadsphasetwoproject.adapter.SkillIQAdapter
 import com.gadsphasetwoproject.databinding.FragmentSkillIQBinding
@@ -50,7 +51,7 @@ class SkillIQFragment : Fragment() {
     }
 
     private fun setupObservers() {
-        viewModel.skillIq.observe(viewLifecycleOwner, {
+        viewModel.skillIq.observe(viewLifecycleOwner) {
             when (it.status) {
                 Resource.Status.SUCCESS -> {
                     progressDialog.hideDialog()
@@ -65,13 +66,13 @@ class SkillIQFragment : Fragment() {
                 Resource.Status.ERROR -> {
                     progressDialog.hideDialog()
                     /*Toasty.error(requireContext(), "error loading", Toasty.LENGTH_SHORT, true)
-                        .show()*/
+                            .show()*/
                 }
 
                 Resource.Status.LOADING ->
                     progressDialog.showDialog()
             }
-        })
+        }
     }
 
     companion object {

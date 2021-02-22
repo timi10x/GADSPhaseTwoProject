@@ -4,6 +4,11 @@ import com.gadsphasetwoproject.utils.Resource
 import retrofit2.Response
 import timber.log.Timber
 
+/**
+ * this base data source takes in retrofit objects and transform it to either success or error
+ */
+
+
 abstract class BaseDataSource {
 
     protected suspend fun <T> getResult(call: suspend () -> Response<T>): Resource<T> {

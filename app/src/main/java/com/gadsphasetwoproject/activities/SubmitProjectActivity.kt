@@ -10,6 +10,7 @@ import android.widget.ImageView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.observe
 import com.gadsphasetwoproject.R
 import com.gadsphasetwoproject.databinding.ActivitySubmitProjectBinding
 import com.gadsphasetwoproject.model.viewModel.SubmitProjectViewModel
@@ -92,22 +93,22 @@ class SubmitProjectActivity : AppCompatActivity() {
     }
 
     private fun getLiveData() {
-        viewModel.getSubmission.observe(this, {
-            if (it == true) {
+        viewModel.getSubmission.observe(this) {
+            if (it) {
                 progressDialog.hideDialog()
                 showSuccessfulDialog()
             } else {
                 progressDialog.hideDialog()
                 showUnSuccessfulDialog()
             }
-        })
-        viewModel.getLoading.observe(this, { loading ->
-            if (loading == true) {
+        }
+        viewModel.getLoading.observe(this) { loading ->
+            if (loading) {
                 progressDialog.showDialog()
             } else {
                 progressDialog.hideDialog()
             }
-        })
+        }
     }
 
     private fun showUnSuccessfulDialog() {
