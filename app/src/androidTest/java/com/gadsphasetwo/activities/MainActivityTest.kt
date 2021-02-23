@@ -5,7 +5,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.gadsphasetwo.screenrobot.MainActivityScreenRobot
 import com.gadsphasetwo.screenrobot.ScreenRobot.Companion.withRobot
 import com.gadsphasetwoproject.R
-import com.gadsphasetwoproject.activities.MainActivity
+import com.gadsphasetwoproject.presentation.activities.MainActivity
 import org.junit.Test
 import org.junit.runner.RunWith
 

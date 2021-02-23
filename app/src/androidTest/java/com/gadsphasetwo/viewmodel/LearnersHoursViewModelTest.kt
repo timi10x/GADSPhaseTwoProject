@@ -2,8 +2,8 @@ package com.gadsphasetwo.viewmodel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.test.platform.app.InstrumentationRegistry
-import com.gadsphasetwoproject.model.viewModel.LearnerHoursViewModel
-import com.gadsphasetwoproject.room.repository.LearnerHoursRepository
+import com.gadsphasetwoproject.domain.room.repository.LearnerHoursRepository
+import com.gadsphasetwoproject.presentation.viewModel.LearnerHoursViewModel
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import org.junit.Before

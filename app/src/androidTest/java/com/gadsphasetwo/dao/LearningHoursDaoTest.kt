@@ -5,9 +5,9 @@ import androidx.room.Room
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.gadsphasetwo.getValue
-import com.gadsphasetwoproject.model.User
-import com.gadsphasetwoproject.room.dao.LearningHoursDao
-import com.gadsphasetwoproject.room.database.AppDatabase
+import com.gadsphasetwoproject.domain.room.dao.LearningHoursDao
+import com.gadsphasetwoproject.domain.room.database.AppDatabase
+import com.gadsphasetwoproject.presentation.model.User
 import kotlinx.coroutines.runBlocking
 import org.hamcrest.Matchers.equalTo
 import org.junit.After

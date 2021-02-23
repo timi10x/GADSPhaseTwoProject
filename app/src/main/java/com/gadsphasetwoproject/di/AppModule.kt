@@ -1,15 +1,15 @@
 package com.gadsphasetwoproject.di
 
 import android.content.Context
-import com.gadsphasetwoproject.networkCalls.ApiInterface
-import com.gadsphasetwoproject.networkCalls.LearnerHoursRemoteDataSource
-import com.gadsphasetwoproject.networkCalls.SkillIqRemoteDataSource
-import com.gadsphasetwoproject.networkCalls.SubmitRemoteDataSource
-import com.gadsphasetwoproject.room.dao.LearningHoursDao
-import com.gadsphasetwoproject.room.dao.SkillIqDao
-import com.gadsphasetwoproject.room.database.AppDatabase
-import com.gadsphasetwoproject.room.repository.LearnerHoursRepository
-import com.gadsphasetwoproject.room.repository.SkillIqRepository
+import com.gadsphasetwoproject.data.networkCalls.ApiInterface
+import com.gadsphasetwoproject.data.networkCalls.LearnerHoursRemoteDataSource
+import com.gadsphasetwoproject.data.networkCalls.SkillIqRemoteDataSource
+import com.gadsphasetwoproject.data.networkCalls.SubmitRemoteDataSource
+import com.gadsphasetwoproject.domain.room.dao.LearningHoursDao
+import com.gadsphasetwoproject.domain.room.dao.SkillIqDao
+import com.gadsphasetwoproject.domain.room.database.AppDatabase
+import com.gadsphasetwoproject.domain.room.repository.LearnerHoursRepository
+import com.gadsphasetwoproject.domain.room.repository.SkillIqRepository
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module
@@ -25,11 +25,13 @@ import javax.inject.Singleton
 @InstallIn(ApplicationComponent::class)
 object AppModule {
 
+    const val BASE_URL = "https://gadsapi.herokuapp.com/"
+
     @Singleton
     @Provides
     fun retrofit(gson: Gson):
             Retrofit = Retrofit.Builder()
-        .baseUrl("https://gadsapi.herokuapp.com/")
+        .baseUrl(BASE_URL)
         .addConverterFactory(GsonConverterFactory.create(gson))
         .build()
 

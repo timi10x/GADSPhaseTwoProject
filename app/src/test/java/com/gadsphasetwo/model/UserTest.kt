@@ -1,6 +1,6 @@
 package com.gadsphasetwo.model
 
-import com.gadsphasetwoproject.model.User
+import com.gadsphasetwoproject.presentation.model.User
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Test

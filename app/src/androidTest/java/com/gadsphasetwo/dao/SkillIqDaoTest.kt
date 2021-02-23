@@ -4,9 +4,9 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.room.Room
 import androidx.test.platform.app.InstrumentationRegistry
 import com.gadsphasetwo.getValue
-import com.gadsphasetwoproject.model.UserIq
-import com.gadsphasetwoproject.room.dao.SkillIqDao
-import com.gadsphasetwoproject.room.database.AppDatabase
+import com.gadsphasetwoproject.domain.room.dao.SkillIqDao
+import com.gadsphasetwoproject.domain.room.database.AppDatabase
+import com.gadsphasetwoproject.presentation.model.UserIq
 import kotlinx.coroutines.runBlocking
 import org.hamcrest.Matchers
 import org.junit.*

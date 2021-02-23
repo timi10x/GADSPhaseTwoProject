@@ -2,8 +2,8 @@ package com.gadsphasetwo.viewmodel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.gadsphasetwo.getOrAwaitValue
-import com.gadsphasetwoproject.model.viewModel.SubmitProjectViewModel
-import com.gadsphasetwoproject.room.repository.SubmitProjectRepository
+import com.gadsphasetwoproject.domain.room.repository.SubmitProjectRepository
+import com.gadsphasetwoproject.presentation.viewModel.SubmitProjectViewModel
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import org.junit.Assert.assertEquals

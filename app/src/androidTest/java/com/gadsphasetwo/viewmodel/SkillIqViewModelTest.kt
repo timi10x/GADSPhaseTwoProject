@@ -1,8 +1,8 @@
 package com.gadsphasetwo.viewmodel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.gadsphasetwoproject.model.viewModel.SkillIqViewModel
-import com.gadsphasetwoproject.room.repository.SkillIqRepository
+import com.gadsphasetwoproject.domain.room.repository.SkillIqRepository
+import com.gadsphasetwoproject.presentation.viewModel.SkillIqViewModel
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import org.junit.Before

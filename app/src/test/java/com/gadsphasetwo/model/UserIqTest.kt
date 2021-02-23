@@ -1,6 +1,6 @@
 package com.gadsphasetwo.model
 
-import com.gadsphasetwoproject.model.UserIq
+import com.gadsphasetwoproject.presentation.model.UserIq
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
