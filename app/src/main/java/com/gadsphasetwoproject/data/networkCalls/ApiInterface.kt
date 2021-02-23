@@ -1,7 +1,7 @@
 package com.gadsphasetwoproject.data.networkCalls
 
-import com.gadsphasetwoproject.presentation.model.User
-import com.gadsphasetwoproject.presentation.model.UserIq
+import com.gadsphasetwoproject.presentation.model.HoursModel
+import com.gadsphasetwoproject.presentation.model.IqModel
 import retrofit2.Response
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -12,10 +12,10 @@ import retrofit2.http.POST
 interface ApiInterface {
 
     @GET("/api/hours")
-    suspend fun getLearnerHours(): Response<List<User>>
+    suspend fun getLearnerHours(): Response<List<HoursModel>>
 
     @GET("/api/skilliq")
-    suspend fun getLearnersIq(): Response<List<UserIq>>
+    suspend fun getLearnersIq(): Response<List<IqModel>>
 
     @POST("1FAIpQLSf9d1TcNU6zc6KR8bSEM41Z1g1zl35cwZr2xyjIhaMAz8WChQ/formResponse")
     @FormUrlEncoded
